@@ -1,7 +1,7 @@
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
+import Header2 from '@/components/layout/Header2';
+import Footer from '@/components/layout/Footer';
 
 export default async function LocaleLayout({
   children,
@@ -15,8 +15,8 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
       <div className="min-h-screen flex flex-col">
-        <Header locale={locale} />
-        <main className="flex-grow">{children}</main>
+        <Header2 locale={locale} />
+        <main className="grow">{children}</main>
         <Footer />
       </div>
     </NextIntlClientProvider>

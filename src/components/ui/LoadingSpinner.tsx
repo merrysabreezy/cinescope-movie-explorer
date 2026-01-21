@@ -1,0 +1,13 @@
+export default function LoadingSpinner() {
+  return (
+    <div className="flex flex-col items-center justify-center min-h-[400px]">
+      <div className="relative">
+        {/* Outer ring */}
+        <div className="w-16 h-16 border-4 border-gray-200 rounded-full"></div>
+        {/* Inner spinning ring */}
+        <div className="absolute top-0 left-0 w-16 h-16 border-4 border-purple-600 border-t-transparent rounded-full animate-spin"></div>
+      </div>
+      <p className="mt-4 text-gray-400">Loading movies...</p>
+    </div>
+  );
+}

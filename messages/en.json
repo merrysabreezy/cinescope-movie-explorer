@@ -1,6 +1,34 @@
 {
-  "Home": {
+  "Header": {
     "logo": "CineScope",
-    "home": "Home"
+    "searchPlaceholder": "Search movies...",
+    "home": "Home",
+    "popular": "Popular",
+    "topRated": "Top Rated",
+    "upcoming": "Upcoming"
+  },
+  "Home": {
+    "title": "Discover Movies",
+    "popularMovies": "Popular Movies",
+    "topRated": "Top Rated",
+    "upcoming": "Upcoming"
+  },
+  "MovieCard": {
+    "rating": "Rating",
+    "releaseDate": "Release Date"
+  },
+  "MovieDetails": {
+    "overview": "Overview",
+    "rating": "Rating",
+    "releaseDate": "Release Date",
+    "minutes": "minutes",
+    "genres": "Genres"
+  },
+  "Footer": {
+    "copyright": "© {year} CineScope. All rights reserved.",
+    "about": "About",
+    "contact": "Contact",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
   }
 }
