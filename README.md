@@ -11,45 +11,6 @@ A modern, responsive movie discovery application built with Next.js, TypeScript,
 - **Responsive Design**: Seamless experience across mobile, tablet, and desktop devices
 - **Modern UI**: Cinematic dark theme with smooth animations and transitions
 
-## 📸 Screenshots
-
-### Homepage (English)
-
-![Homepage English](screenshots/homepage-en.png)
-_Main discovery page showing popular movies with category navigation_
-
-### Homepage (Spanish)
-
-![Homepage Spanish](screenshots/homepage-es.png)
-_Página principal mostrando películas populares con navegación por categorías_
-
-### Movie Details Page (English)
-
-![Movie Details English](screenshots/movie-details-en.png)
-_Detailed movie information including poster, ratings, overview, and metadata_
-
-### Movie Details Page (Spanish)
-
-![Movie Details Spanish](screenshots/movie-details-es.png)
-_Información detallada de la película incluyendo póster, calificaciones, sinopsis y metadatos_
-
-### Search Results (English)
-
-![Search Results English](screenshots/search-results-en.png)
-_Search functionality showing filtered movie results_
-
-### Popular Movies Page (English)
-
-![Top Rated Movies English](screenshots/top-rated-movies-en.png)
-_Category-specific page showing top rated movies in grid layout_
-
-### Mobile Responsive Design
-
-![Mobile View](screenshots/mobile-view.png)
-_Responsive design optimized for mobile devices_
-
-_Screenshots captured on desktop (1920x1080) and mobile (375x667) viewports_
-
 ## 🛠️ Tech Stack
 
 | Technology             | Purpose                   |
@@ -178,6 +139,45 @@ The app uses a custom cinematic dark theme defined in `src/app/globals.css`:
 - **Background**: Dark gray (`#171717`) and Cinema Surface (`oklch(0.18 0.02 262)`) for immersive feel
 - **Typography**: Inter for body text, Space Grotesk for headings
 - **Effects**: Spotlight gradients, glow shadows, smooth animations
+
+## 📸 Screenshots
+
+### Homepage (English)
+
+![Homepage English](screenshots/homepage-en.png)
+_Main discovery page showing popular movies with category navigation_
+
+### Homepage (Spanish)
+
+![Homepage Spanish](screenshots/homepage-es.png)
+_Página principal mostrando películas populares con navegación por categorías_
+
+### Movie Details Page (English)
+
+![Movie Details English](screenshots/movie-details-en.png)
+_Detailed movie information including poster, ratings, overview, and metadata_
+
+### Movie Details Page (Spanish)
+
+![Movie Details Spanish](screenshots/movie-details-es.png)
+_Información detallada de la película incluyendo póster, calificaciones, sinopsis y metadatos_
+
+### Search Results (English)
+
+![Search Results English](screenshots/search-results-en.png)
+_Search functionality showing filtered movie results_
+
+### Popular Movies Page (English)
+
+![Top Rated Movies English](screenshots/top-rated-movies-en.png)
+_Category-specific page showing top rated movies in grid layout_
+
+### Mobile Responsive Design
+
+![Mobile View](screenshots/mobile-view.png)
+_Responsive design optimized for mobile devices_
+
+_Screenshots captured on desktop (1920x1080) and mobile (375x667) viewports_
 
 ## 🧪 Tech Decisions
 
