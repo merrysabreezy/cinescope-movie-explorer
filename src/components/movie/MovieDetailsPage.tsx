@@ -17,7 +17,7 @@ export default function MovieDetailsPage({ movie }: { movie: MovieDetails }) {
   const backdropUrl = getBackdropUrl(movie.backdrop_path);
 
   return (
-    <div className="relative pb-20">
+    <div className="relative pb-10 md:pb-20">
       {/* Hero Backdrop Section */}
       <div className="relative h-[50vh] md:h-[70vh] w-full">
         <Image
@@ -28,18 +28,10 @@ export default function MovieDetailsPage({ movie }: { movie: MovieDetails }) {
           className="object-cover"
           fetchPriority="high"
           sizes="100vw"
+          quality={85}
         />
         <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/60 to-transparent" />
         <div className="absolute inset-0 bg-linear-to-r from-slate-950/80 to-transparent" />
-
-        <button
-          onClick={() => router.back()}
-          className="absolute top-8 left-4 md:left-8 flex items-center gap-2 px-4 py-2 rounded-full bg-slate-950/60 backdrop-blur-md border border-white/10 hover:bg-slate-950 transition-all z-20"
-          aria-label={t('common.back')}
-        >
-          <ArrowLeft className="w-4 h-4" />
-          {t('common.back')}
-        </button>
       </div>
 
       {/* Main Content */}
@@ -54,11 +46,23 @@ export default function MovieDetailsPage({ movie }: { movie: MovieDetails }) {
               height={750}
               priority
               className="w-full h-full aspect-2/3 object-cover"
+              quality={85}
+              sizes="(max-width: 768px) 192px, 320px"
             />
           </div>
 
           {/* Details Column */}
           <div className="flex-1 mt-6 md:mt-12">
+            {/* Back Button - At the start of details */}
+            {/* <button
+              onClick={() => router.back()}
+              className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-slate-950/60 backdrop-blur-md border border-white/10 hover:bg-slate-950 transition-all mb-6"
+              aria-label={t('common.back')}
+            >
+              <ArrowLeft className="w-4 h-4" />
+              {t('common.back')}
+            </button> */}
+
             <h1 className="text-4xl md:text-6xl font-black text-white mb-2 leading-tight">
               {movie.title}
             </h1>

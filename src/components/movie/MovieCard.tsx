@@ -10,7 +10,7 @@ interface MovieCardProps {
 
 const MovieCard = ({ movie }: MovieCardProps) => {
   const year = movie.release_date ? movie.release_date.split('-')[0] : 'N/A';
-  const rating = movie.vote_average.toFixed(1);
+  const rating = movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A';
 
   const posterUrl = getPosterUrl(movie.poster_path);
 
@@ -18,6 +18,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
     <Link
       href={`/movie/${movie.id}`}
       className="group relative block rounded-xl bg-slate-900 overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-cinema-gold-glow/20"
+      aria-label={`View details for ${movie.title} (${year}) - Rated ${rating}/10`}
     >
       <div className="relative aspect-2/3 w-full overflow-hidden">
         <Image
@@ -26,7 +27,10 @@ const MovieCard = ({ movie }: MovieCardProps) => {
           fill
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
           className="object-cover transition-transform duration-500 group-hover:scale-110"
-          quality={'60'}
+          quality={75}
+          loading="lazy"
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R+IRjWjBqO6O2mhP//Z"
         />
 
         <div className="absolute top-2 right-2 flex items-center gap-1 px-2 py-1 rounded-md bg-slate-950/80 backdrop-blur-sm border border-white/10">

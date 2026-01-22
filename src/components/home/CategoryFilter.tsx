@@ -38,7 +38,7 @@ const CategoryFilter = ({ activeCategory, onCategoryChange }: CategoryFilterProp
   ] as const;
 
   return (
-    <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
+    <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar overflow-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
       {categories.map((cat) => {
         const isActive = activeCategory === cat.key;
 
