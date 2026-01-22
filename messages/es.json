@@ -9,7 +9,8 @@
     "back": "Volver",
     "enterSearchTerm": "Introduce un término de búsqueda para encontrar películas",
     "changeLanguage": "Cambiar idioma",
-    "menu": "Menú"
+    "menu": "Menú",
+    "resultsFound": "{count, plural, =0 {No se encontraron resultados} one {# resultado encontrado} other {# resultados encontrados}}"
   },
   "header": {
     "searchPlaceholder": "Buscar películas...",
@@ -49,6 +50,7 @@
     "movieNotFound": "Película no encontrada",
     "fetchFailed": "Error al obtener datos",
     "networkError": "Error de red. Por favor verifica tu conexión.",
-    "pageNotFound": "Página no encontrada"
+    "pageNotFound": "Página no encontrada",
+    "goBackHome": "Volver a Inicio"
   }
 }
