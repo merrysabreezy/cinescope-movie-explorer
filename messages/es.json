@@ -26,7 +26,8 @@
   "home": {
     "title": "CineScope",
     "subtitle": "Descubre Tu Próxima Película Favorita",
-    "discoverMovies": "Explora miles de películas de todo el mundo"
+    "discoverMovies": "Explora miles de películas de todo el mundo",
+    "home": "Inicio"
   },
   "movie": {
     "overview": "Sinopsis",
@@ -50,7 +51,10 @@
     "copyright": "© {year} CineScope. Todos los derechos reservados.",
     "poweredBy": "Desarrollado con TMDB API",
     "disclaimer": "Este producto usa la API de TMDB pero no está respaldado ni certificado por TMDB.",
-    "description": "Tu guía definitiva del cine. Explora millones de películas, sigue lo que quieres ver y mantente al día con los últimos estrenos."
+    "description": "Tu guía definitiva del cine. Explora millones de películas, sigue lo que quieres ver y mantente al día con los últimos estrenos.",
+    "quickLinks": "Enlaces Rápidos",
+    "privacyPolicy": "Política de Privacidad",
+    "termsOfService": "Términos de Servicio"
   },
   "errors": {
     "movieNotFound": "Película no encontrada",
