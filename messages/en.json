@@ -40,9 +40,10 @@
     "nowPlaying": "Now Playing"
   },
   "footer": {
-    "copyright": "© 2026 CineScope. All rights reserved.",
+    "copyright": "© {year} CineScope. All rights reserved.",
     "poweredBy": "Powered by TMDB API",
-    "disclaimer": "This product uses the TMDB API but is not endorsed or certified by TMDB."
+    "disclaimer": "This product uses the TMDB API but is not endorsed or certified by TMDB.",
+    "description": "Your ultimate movie guide. Explore millions of movies, track what you want to watch, and stay updated with the latest releases."
   },
   "errors": {
     "movieNotFound": "Movie not found",
