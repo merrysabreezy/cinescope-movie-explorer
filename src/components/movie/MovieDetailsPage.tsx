@@ -4,37 +4,34 @@ import { getBackdropUrl, getPosterUrl } from '@/lib/api/config';
 import { MovieDetails } from '@/lib/api/types';
 import { useRouter } from '@/lib/i18n/routing';
 import { formatCurrency, formatRuntime } from '@/lib/utils';
-import { ArrowLeft, Calendar, Clock, Film, Star } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, Star } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { useParams } from 'next/navigation';
 
 export default function MovieDetailsPage({ movie }: { movie: MovieDetails }) {
-  const params = useParams();
-  const id = params?.id as string;
+  // const params = useParams();
+  // const id = params?.id as string;
   const router = useRouter();
   const t = useTranslations();
   const locale = useLocale();
 
   //   const { data: movie, isLoading, error } = useMovieDetails(id ? parseInt(id) : undefined);
-
-  //   if (isLoading) return <MovieDetailsSkeleton />;
-
-  //   if (error || !movie) {
-  //     return (
-  //       <div className="container mx-auto px-4 py-20 text-center">
-  //         <Film className="w-16 h-16 text-slate-700 mx-auto mb-4" />
-  //         <h1 className="text-2xl font-bold text-white">{t('errors.movieNotFound')}</h1>
-  //         <button
-  //           onClick={() => router.push('/')}
-  //           className="mt-6 text-cinema-gold hover:underline"
-  //           aria-label={t('common.back')}
-  //         >
-  //           {t('common.back')}
-  //         </button>
-  //       </div>
-  //     );
-  //   }
+  // if (isLoading) return <MovieDetailsSkeleton />;
+  // if (error || !movie) {
+  //   return (
+  //     <div className="container mx-auto px-4 py-20 text-center">
+  //       <Film className="w-16 h-16 text-slate-700 mx-auto mb-4" />
+  //       <h1 className="text-2xl font-bold text-white">{t('errors.movieNotFound')}</h1>
+  //       <button
+  //         onClick={() => router.push('/')}
+  //         className="mt-6 text-cinema-gold hover:underline"
+  //         aria-label={t('common.back')}
+  //       >
+  //         {t('common.back')}
+  //       </button>
+  //     </div>
+  //   );
+  // }
 
   const posterUrl = getPosterUrl(movie.poster_path);
   const backdropUrl = getBackdropUrl(movie.backdrop_path);
@@ -137,7 +134,9 @@ export default function MovieDetailsPage({ movie }: { movie: MovieDetails }) {
                     <p className="text-sm text-slate-400 uppercase tracking-tighter mb-1">
                       {t('movie.budget')}
                     </p>
-                    <p className="text-xl font-bold text-white">{formatCurrency(movie.budget)}</p>
+                    <p className="text-xl font-bold text-white">
+                      {formatCurrency(movie.budget, locale)}
+                    </p>
                   </div>
                 )}
                 {movie.revenue > 0 && (
@@ -145,7 +144,9 @@ export default function MovieDetailsPage({ movie }: { movie: MovieDetails }) {
                     <p className="text-sm text-slate-400 uppercase tracking-tighter mb-1">
                       {t('movie.revenue')}
                     </p>
-                    <p className="text-xl font-bold text-white">{formatCurrency(movie.revenue)}</p>
+                    <p className="text-xl font-bold text-white">
+                      {formatCurrency(movie.revenue, locale)}
+                    </p>
                   </div>
                 )}
               </div>
@@ -157,18 +158,18 @@ export default function MovieDetailsPage({ movie }: { movie: MovieDetails }) {
   );
 }
 
-function MovieDetailsSkeleton() {
-  return (
-    <div className="animate-pulse pb-20">
-      <div className="h-[50vh] bg-slate-900" />
-      <div className="container mx-auto px-4 -mt-32 flex flex-col md:flex-row gap-10">
-        <div className="w-48 md:w-80 aspect-[2/3] bg-slate-800 rounded-2xl" />
-        <div className="flex-1 space-y-4 pt-12">
-          <div className="h-12 w-3/4 bg-slate-800 rounded" />
-          <div className="h-6 w-1/4 bg-slate-800 rounded" />
-          <div className="h-32 bg-slate-800 rounded" />
-        </div>
-      </div>
-    </div>
-  );
-}
+// function MovieDetailsSkeleton() {
+//   return (
+//     <div className="animate-pulse pb-20">
+//       <div className="h-[50vh] bg-slate-900" />
+//       <div className="container mx-auto px-4 -mt-32 flex flex-col md:flex-row gap-10">
+//         <div className="w-48 md:w-80 aspect-[2/3] bg-slate-800 rounded-2xl" />
+//         <div className="flex-1 space-y-4 pt-12">
+//           <div className="h-12 w-3/4 bg-slate-800 rounded" />
+//           <div className="h-6 w-1/4 bg-slate-800 rounded" />
+//           <div className="h-32 bg-slate-800 rounded" />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }

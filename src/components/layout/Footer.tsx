@@ -10,9 +10,10 @@ export default async function Footer() {
   return (
     <footer className="w-full bg-slate-950 text-slate-300 border-t border-slate-800">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+        {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12"> */}
+        <div className="flex flex-col md:flex-row justify-between gap-8 md:gap-4">
           {/* Brand Section */}
-          <div className="space-y-4">
+          <div className="space-y-4 md:w-1/3">
             <div className="flex items-center gap-2 text-primary">
               <Film className="w-5 h-5" />
               <span className="font-display font-bold cinema-gradient-text">CineScope</span>
@@ -22,9 +23,7 @@ export default async function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-white font-semibold mb-4 uppercase tracking-wider text-xs">
-              Navigation
-            </h3>
+            <h3 className="font-semibold mb-4 uppercase tracking-wider text-xs">Navigation</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/" className="hover:text-primary transition-colors">
@@ -45,12 +44,12 @@ export default async function Footer() {
           </div>
 
           {/* TMDB Attribution (Required by TMDB Terms) */}
-          <div className="space-y-4 flex flex-col items-start md:items-end">
+          <div className="space-y-4 flex flex-col items-start md:items-end md:text-right md:w-1/3">
             <a
               href="https://www.themoviedb.org/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 text-sm text-slate-400 hover:text-cinema-gold transition-colors group"
+              className="flex items-center justify-end gap-3 text-sm  hover:text-cinema-gold transition-colors group"
             >
               {t('poweredBy')}
               <Image
@@ -62,17 +61,17 @@ export default async function Footer() {
                 className="h-3 md:h-4 w-auto brightness-90 group-hover:brightness-110 transition-all"
               />
             </a>
-            <p className="text-xs text-slate-400 max-w-sm leading-relaxed">{t('disclaimer')}</p>
+            <p className="text-xs max-w-sm leading-relaxed">{t('disclaimer')}</p>
           </div>
         </div>
 
         <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
           <p>{t('copyright', { year: currentYear })}</p>
           <div className="flex gap-6">
-            <Link href="#" className="hover:text-white transition-colors">
+            <Link href="#" className="hover:text-primary transition-colors">
               Privacy Policy
             </Link>
-            <Link href="#" className="hover:text-white transition-colors">
+            <Link href="#" className="hover:text-primary transition-colors">
               Terms of Service
             </Link>
           </div>

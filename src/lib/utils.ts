@@ -9,9 +9,10 @@ export const formatRuntime = (minutes: number | null) => {
 };
 
 // Helper: Format currency
-export const formatCurrency = (amount: number) => {
+export const formatCurrency = (amount: number, locale: string = 'en-US') => {
   if (!amount) return 'N/A';
-  return new Intl.NumberFormat('en-US', {
+  const lang = locale === 'es' ? 'es-ES' : 'en-US';
+  return new Intl.NumberFormat(lang, {
     style: 'currency',
     currency: 'USD',
     maximumFractionDigits: 0,

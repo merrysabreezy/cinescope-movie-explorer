@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import MovieDetailsPage from '@/components/movie/MovieDetailsPage';
 import { fetchMovieDetails } from '@/lib/api/movies';
 import { getBackdropUrl } from '@/lib/api/config';
+import { notFound } from 'next/navigation';
 
 type Props = {
   params: Promise<{ id: string; locale: string }>;
@@ -9,7 +10,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id, locale } = await params;
-  const movieId = parseInt(id, 10); // Ensuring it's a number
+  const movieId = parseInt(id, 10);
   const movie = await fetchMovieDetails(movieId, locale);
   const backdropUrl = getBackdropUrl(movie.backdrop_path);
 
@@ -25,7 +26,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function MoviePage({ params }: Props) {
   const { id, locale } = await params;
   const movieId = parseInt(id, 10);
-  const movie = await fetchMovieDetails(movieId, locale);
+  try {
+    const movie = await fetchMovieDetails(movieId, locale);
 
-  return <MovieDetailsPage movie={movie} />;
+    return <MovieDetailsPage movie={movie} />;
+  } catch (error) {
+    notFound();
+  }
 }
