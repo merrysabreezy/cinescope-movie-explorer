@@ -1,7 +1,7 @@
 'use client';
 
 import { useSearchMovies } from '@/lib/api/useMovies';
-import MovieGrid from '@/components/home/MovieGrid';
+import MovieGrid from '@/components/movie/MovieGrid';
 import { useRouter } from '@/lib/i18n/routing';
 import { ArrowLeft, Search } from 'lucide-react';
 import { useTranslations } from 'next-intl';

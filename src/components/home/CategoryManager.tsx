@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { MovieCategory } from '@/lib/api/types';
 import { useMoviesByCategory } from '@/lib/api/useMovies';
 import CategoryFilter from './CategoryFilter';
-import MovieGrid from './MovieGrid';
+import MovieGrid from '../movie/MovieGrid';
 
 export default function CategoryManager() {
   const [category, setCategory] = useState<MovieCategory>('popular');

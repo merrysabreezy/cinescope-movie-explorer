@@ -9,29 +9,9 @@ import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 export default function MovieDetailsPage({ movie }: { movie: MovieDetails }) {
-  // const params = useParams();
-  // const id = params?.id as string;
   const router = useRouter();
   const t = useTranslations();
   const locale = useLocale();
-
-  //   const { data: movie, isLoading, error } = useMovieDetails(id ? parseInt(id) : undefined);
-  // if (isLoading) return <MovieDetailsSkeleton />;
-  // if (error || !movie) {
-  //   return (
-  //     <div className="container mx-auto px-4 py-20 text-center">
-  //       <Film className="w-16 h-16 text-slate-700 mx-auto mb-4" />
-  //       <h1 className="text-2xl font-bold text-white">{t('errors.movieNotFound')}</h1>
-  //       <button
-  //         onClick={() => router.push('/')}
-  //         className="mt-6 text-cinema-gold hover:underline"
-  //         aria-label={t('common.back')}
-  //       >
-  //         {t('common.back')}
-  //       </button>
-  //     </div>
-  //   );
-  // }
 
   const posterUrl = getPosterUrl(movie.poster_path);
   const backdropUrl = getBackdropUrl(movie.backdrop_path);
@@ -73,7 +53,7 @@ export default function MovieDetailsPage({ movie }: { movie: MovieDetails }) {
               width={500}
               height={750}
               priority
-              className="w-full h-full aspect-[2/3] object-cover"
+              className="w-full h-full aspect-2/3 object-cover"
             />
           </div>
 
@@ -158,6 +138,23 @@ export default function MovieDetailsPage({ movie }: { movie: MovieDetails }) {
   );
 }
 
+//   const { data: movie, isLoading, error } = useMovieDetails(id ? parseInt(id) : undefined);
+// if (isLoading) return <MovieDetailsSkeleton />;
+// if (error || !movie) {
+//   return (
+//     <div className="container mx-auto px-4 py-20 text-center">
+//       <Film className="w-16 h-16 text-slate-700 mx-auto mb-4" />
+//       <h1 className="text-2xl font-bold text-white">{t('errors.movieNotFound')}</h1>
+//       <button
+//         onClick={() => router.push('/')}
+//         className="mt-6 text-cinema-gold hover:underline"
+//         aria-label={t('common.back')}
+//       >
+//         {t('common.back')}
+//       </button>
+//     </div>
+//   );
+// }
 // function MovieDetailsSkeleton() {
 //   return (
 //     <div className="animate-pulse pb-20">
