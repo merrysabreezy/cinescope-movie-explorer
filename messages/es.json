@@ -1,34 +1,53 @@
 {
-  "Header": {
-    "logo": "CineScope",
+  "common": {
+    "search": "Buscar",
+    "loading": "Cargando...",
+    "error": "Ocurrió un error",
+    "retry": "Intentar de nuevo",
+    "noResults": "No se encontraron resultados",
+    "viewMore": "Ver más",
+    "back": "Volver",
+    "enterSearchTerm": "Introduce un término de búsqueda para encontrar películas",
+    "changeLanguage": "Cambiar idioma",
+    "menu": "Menú"
+  },
+  "header": {
     "searchPlaceholder": "Buscar películas...",
-    "home": "Inicio",
-    "popular": "Popular",
-    "topRated": "Mejor Valoradas",
-    "upcoming": "Próximamente"
+    "language": "Idioma",
+    "logo": "CineScope"
   },
-  "Home": {
-    "title": "Descubre Películas",
-    "popularMovies": "Películas Populares",
-    "topRated": "Mejor Valoradas",
-    "upcoming": "Próximamente"
+  "home": {
+    "title": "CineScope",
+    "subtitle": "Descubre Tu Próxima Película Favorita",
+    "discoverMovies": "Explora miles de películas de todo el mundo"
   },
-  "MovieCard": {
-    "rating": "Puntuación",
-    "releaseDate": "Fecha de Estreno"
-  },
-  "MovieDetails": {
+  "movie": {
     "overview": "Sinopsis",
-    "rating": "Puntuación",
     "releaseDate": "Fecha de Estreno",
-    "minutes": "minutos",
-    "genres": "Géneros"
+    "rating": "Calificación",
+    "runtime": "Duración",
+    "genres": "Géneros",
+    "voteCount": "Votos",
+    "originalLanguage": "Idioma Original",
+    "budget": "Presupuesto",
+    "revenue": "Recaudación",
+    "moviesFound": "{count, plural, =0 {No se encontraron películas} one {# película encontrada} other {# películas encontradas}}"
   },
-  "Footer": {
-    "copyright": "© {year} CineScope. Todos los derechos reservados.",
-    "about": "Acerca de",
-    "contact": "Contacto",
-    "privacy": "Política de Privacidad",
-    "terms": "Términos de Servicio"
+  "categories": {
+    "popular": "Populares",
+    "topRated": "Mejor Valoradas",
+    "upcoming": "Próximamente",
+    "nowPlaying": "En Cartelera"
+  },
+  "footer": {
+    "copyright": "© 2026 CineScope. Todos los derechos reservados.",
+    "poweredBy": "Desarrollado con TMDB API",
+    "disclaimer": "Este producto usa la API de TMDB pero no está respaldado ni certificado por TMDB."
+  },
+  "errors": {
+    "movieNotFound": "Película no encontrada",
+    "fetchFailed": "Error al obtener datos",
+    "networkError": "Error de red. Por favor verifica tu conexión.",
+    "pageNotFound": "Página no encontrada"
   }
 }

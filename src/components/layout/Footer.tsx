@@ -1,3 +1,5 @@
+import { Film } from 'lucide-react';
+
 const Footer: React.FC = () => {
   return (
     <footer className="bg-card border-t border-border/50 mt-auto">
@@ -6,10 +8,8 @@ const Footer: React.FC = () => {
           {/* Logo and Copyright */}
           <div className="flex flex-col items-center md:items-start gap-2">
             <div className="flex items-center gap-2">
-              {/* <Film className="w-5 h-5 text-primary" /> */}
-              <span className="font-display font-bold cinema-gradient-text">
-                CineScope
-              </span>
+              <Film className="w-5 h-5 text-primary" />
+              <span className="font-display font-bold cinema-gradient-text">CineScope</span>
             </div>
             {/* <p className="text-sm text-muted-foreground">
             {t("footer.copyright")}

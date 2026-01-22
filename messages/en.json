@@ -1,34 +1,53 @@
 {
-  "Header": {
-    "logo": "CineScope",
+  "common": {
+    "search": "Search",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Try Again",
+    "noResults": "No results found",
+    "viewMore": "View More",
+    "back": "Back",
+    "enterSearchTerm": "Enter a search term to find movies",
+    "changeLanguage": "Change Language",
+    "menu": "Menu"
+  },
+  "header": {
     "searchPlaceholder": "Search movies...",
-    "home": "Home",
+    "language": "Language",
+    "logo": "CineScope"
+  },
+  "home": {
+    "title": "CineScope",
+    "subtitle": "Discover Your Next Favorite Movie",
+    "discoverMovies": "Explore thousands of movies from around the world"
+  },
+  "movie": {
+    "overview": "Overview",
+    "releaseDate": "Release Date",
+    "rating": "Rating",
+    "runtime": "Runtime",
+    "genres": "Genres",
+    "voteCount": "Vote Count",
+    "originalLanguage": "Original Language",
+    "budget": "Budget",
+    "revenue": "Revenue",
+    "moviesFound": "{count, plural, =0 {No movies found} one {# movie found} other {# movies found}}"
+  },
+  "categories": {
     "popular": "Popular",
     "topRated": "Top Rated",
-    "upcoming": "Upcoming"
+    "upcoming": "Upcoming",
+    "nowPlaying": "Now Playing"
   },
-  "Home": {
-    "title": "Discover Movies",
-    "popularMovies": "Popular Movies",
-    "topRated": "Top Rated",
-    "upcoming": "Upcoming"
+  "footer": {
+    "copyright": "© 2026 CineScope. All rights reserved.",
+    "poweredBy": "Powered by TMDB API",
+    "disclaimer": "This product uses the TMDB API but is not endorsed or certified by TMDB."
   },
-  "MovieCard": {
-    "rating": "Rating",
-    "releaseDate": "Release Date"
-  },
-  "MovieDetails": {
-    "overview": "Overview",
-    "rating": "Rating",
-    "releaseDate": "Release Date",
-    "minutes": "minutes",
-    "genres": "Genres"
-  },
-  "Footer": {
-    "copyright": "© {year} CineScope. All rights reserved.",
-    "about": "About",
-    "contact": "Contact",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Service"
+  "errors": {
+    "movieNotFound": "Movie not found",
+    "fetchFailed": "Failed to fetch data",
+    "networkError": "Network error. Please check your connection.",
+    "pageNotFound": "Page not found"
   }
 }

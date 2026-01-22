@@ -1,80 +1,136 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState, useCallback } from 'react';
+import { Search, Globe, Film, Menu, X } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { useTranslations } from 'next-intl';
-// import SearchBar from "./SearchBar";
-// import LanguageSwitcher from "./LanguageSwitcher";
+import { useLocale, useTranslations } from 'next-intl';
+import { usePathname, useRouter } from '@/lib/i18n/routing';
+import { useSearchParams } from 'next/navigation';
 
-interface HeaderProps {
-  locale: string;
-}
+const Header: React.FC = () => {
+  const locale = useLocale();
+  const t = useTranslations('header');
+  const c = useTranslations('common');
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
-export default function Header({ locale }: HeaderProps) {
-  const t = useTranslations('Header');
-  const [activeFilter, setActiveFilter] = useState('popular');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const filters = [
-    { key: 'popular', label: t('popular') },
-    { key: 'top_rated', label: t('topRated') },
-    { key: 'upcoming', label: t('upcoming') },
-  ];
+  const handleSearch = useCallback(
+    (e: React.FormEvent) => {
+      e.preventDefault();
+      if (searchQuery.trim()) {
+        // handle search params
+        router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+        setSearchQuery('');
+        setIsMobileMenuOpen(false);
+      }
+    },
+    [searchQuery, router]
+  );
+
+  const toggleLanguage = () => {
+    const newLocale = locale === 'en' ? 'es' : 'en';
+    const queryString = searchParams.toString();
+    const newPath = queryString ? `${pathname}?${queryString}` : pathname;
+
+    router.replace(newPath, { locale: newLocale });
+  };
+
+  const languageDisplayName = locale === 'en' ? 'English' : 'Español';
 
   return (
-    <header className="sticky top-0 z-50 bg-gray-900 border-b border-gray-800">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          {/* Logo and Navigation */}
-          <div className="flex items-center justify-between md:justify-start gap-8">
-            <Link href={`/${locale}`} className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-linear-to-r from-primary-600 to-primary-500 rounded-lg" />
-              <span className="text-2xl font-bold text-primary">{t('logo')}</span>
-            </Link>
-            <div className="text-primary">HELLO</div>
-            <nav className="hidden md:flex items-center gap-6">
-              {filters.map((filter) => (
-                <Link
-                  key={filter.key}
-                  href={`/${locale}?category=${filter.key}`}
-                  className={`px-3 py-2 rounded-lg transition-colors ${
-                    activeFilter === filter.key
-                      ? 'bg-purple-600 text-white'
-                      : 'text-gray-300 hover:text-white hover:bg-gray-800'
-                  }`}
-                  onClick={() => setActiveFilter(filter.key)}
-                >
-                  {filter.label}
-                </Link>
-              ))}
-            </nav>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-xl border-b border-white/10">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Logo */}
+          <Link href={`/${locale}`} className="flex items-center gap-2 group">
+            <div className="relative">
+              <Film className="w-8 h-8 text-primary transition-transform group-hover:scale-110" />
+              <div className="absolute inset-0 bg-primary/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+            </div>
+            <span className="font-display text-xl md:text-2xl font-bold cinema-gradient-text text-primary">
+              {t('logo')}
+            </span>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-6">
+            {/* Search Bar */}
+            <form onSubmit={handleSearch} className="relative">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={t('searchPlaceholder')}
+                className="w-64 lg:w-80 px-4 py-2 rounded-full bg-slate-900 border border-white/10 focus:border-cinema-gold focus:ring-1 focus:ring-cinema-gold outline-none transition-all"
+              />
+              <button
+                type="submit"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-primary transition-colors"
+              >
+                <Search className="w-5 h-5" />
+              </button>
+            </form>
+
+            {/* Language Switcher */}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800 hover:bg-slate-700 transition-colors"
+            >
+              <Globe className="w-4 h-4 text-cinema-gold" />
+              <span className="text-sm font-medium text-white">{languageDisplayName}</span>
+            </button>
           </div>
 
-          {/* Search and Language Switcher */}
-          <div className="flex items-center gap-4">
-            {/* <SearchBar placeholder={t("searchPlaceholder")} locale={locale} />
-            <LanguageSwitcher currentLocale={locale} /> */}
-          </div>
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 text-slate-300"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
 
-        {/* Mobile Navigation */}
-        <nav className="flex md:hidden items-center gap-2 mt-4 overflow-x-auto pb-2">
-          {filters.map((filter) => (
-            <Link
-              key={filter.key}
-              href={`/${locale}?category=${filter.key}`}
-              className={`px-4 py-2 rounded-lg text-sm whitespace-nowrap transition-colors ${
-                activeFilter === filter.key
-                  ? 'bg-purple-600 text-white'
-                  : 'text-gray-300 hover:text-white hover:bg-gray-800'
-              }`}
-              onClick={() => setActiveFilter(filter.key)}
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden py-4 border-t border-white/10 animate-in fade-in slide-in-from-top-2">
+            {/* Mobile Search */}
+            <form onSubmit={handleSearch} className="mb-4">
+              <div className="relative">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder={t('searchPlaceholder')}
+                  className="w-full px-4 py-2 rounded-full bg-slate-900 border border-white/10"
+                />
+                <button
+                  type="submit"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-primary transition-colors"
+                  aria-label={c('search')}
+                >
+                  <Search className="w-5 h-5" />
+                </button>
+              </div>
+            </form>
+
+            {/* Mobile Language Switcher */}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-2 w-full px-4 py-3 rounded-xl bg-slate-800"
             >
-              {filter.label}
-            </Link>
-          ))}
-        </nav>
+              <Globe className="w-5 h-5 text-primary" />
+              <span className="font-medium text-white">{languageDisplayName}</span>
+            </button>
+          </div>
+        )}
       </div>
     </header>
   );
-}
+};
+
+export default Header;
