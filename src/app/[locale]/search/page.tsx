@@ -2,10 +2,12 @@
 
 import { useSearchMovies } from '@/lib/api/useMovies';
 import MovieGrid from '@/components/movie/MovieGrid';
+import Pagination from '@/components/ui/Pagination';
 import { useRouter } from '@/lib/i18n/routing';
 import { ArrowLeft, Search } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
+import { useState, useEffect } from 'react';
 
 export default function SearchResultsPage() {
   const t = useTranslations('common');
@@ -13,8 +15,36 @@ export default function SearchResultsPage() {
   const router = useRouter();
 
   const query = searchParams.get('q') || '';
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const { data, isLoading, error, refetch } = useSearchMovies(query);
+  // Get page from URL params
+  useEffect(() => {
+    const pageParam = searchParams.get('page');
+    if (pageParam) {
+      const page = parseInt(pageParam, 10);
+      if (page > 0) {
+        setCurrentPage(page);
+      }
+    } else {
+      setCurrentPage(1); // Reset to page 1 if no page param
+    }
+  }, [searchParams]);
+
+  // Data fetching via React Query
+  const { data, isLoading, error, refetch } = useSearchMovies(query, currentPage);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    // Update URL with both query and page
+    const params = new URLSearchParams();
+    params.set('q', query);
+    if (page > 1) {
+      params.set('page', page.toString());
+    }
+    router.replace(`/search?${params.toString()}`);
+  };
+
+  const totalPages = data?.total_pages || 1;
 
   return (
     <div className="container mx-auto px-4 py-8 md:py-12">
@@ -55,12 +85,20 @@ export default function SearchResultsPage() {
           <p className="text-slate-400">{t('enterSearchTerm')}</p>
         </div>
       ) : (
-        <MovieGrid
-          movies={data?.results}
-          isLoading={isLoading}
-          error={error}
-          onRetry={() => refetch()}
-        />
+        <>
+          <MovieGrid
+            movies={data?.results}
+            isLoading={isLoading}
+            error={error}
+            onRetry={() => refetch()}
+          />
+
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+        </>
       )}
     </div>
   );
