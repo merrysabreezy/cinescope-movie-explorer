@@ -53,13 +53,13 @@ src/
 │   ├── movie/                  # Movie components
 │   │   ├── MovieCard.tsx
 │   │   ├── MovieGrid.tsx
-│   │   └── MovieDetailsPage.tsx
+│   │   ├── MovieDetailsPage.tsx
+│   │   ├── MovieDetailsHero.tsx
+│   │   └── MovieDetailsInfo.tsx
 │   ├── providers/              # Context providers
 │   │   └── ReactQueryProvider.tsx
 │   └── ui/                     # Reusable UI components
-│       ├── ErrorMessage.tsx
-│       ├── LoadingSpinner.tsx
-│       └── SkeletonCard.tsx
+│       └── Pagination.tsx
 ├── lib/                        # Shared utilities
 │   ├── api/                    # TMDB API logic
 │   │   ├── config.ts
