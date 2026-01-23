@@ -15,10 +15,10 @@ A modern, responsive movie discovery application built with Next.js, TypeScript,
 
 | Technology             | Purpose                   |
 | ---------------------- | ------------------------- |
-| Next.js 15             | Framework with App Router |
-| React 18               | UI Framework              |
+| Next.js 16             | Framework with App Router |
+| React 19               | UI Framework              |
 | TypeScript             | Type Safety               |
-| Tailwind CSS           | Styling                   |
+| Tailwind CSS 4         | Styling                   |
 | React Query (TanStack) | Data Fetching & Caching   |
 | next-intl              | Internationalization      |
 | Lucide React           | Icons                     |
@@ -79,7 +79,7 @@ src/
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 20.9.0+
 - npm or yarn
 
 ### Installation
